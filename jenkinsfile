@@ -1,11 +1,12 @@
 node {
-stage ('SCM Checkout'){
-
-git 'https://github.com/marwagaaloul/maven-and-jenkis'
+  stage ('SCM Checkout'){
+    git 'https://github.com/marwagaaloul/maven-and-jenkis'
 }
 
-stage('Compile-Package'){
-sh 'mvn package'
+  stage('Compile-Package'){
+    def mvnHome =tool name: '', type: 'maven'
+
+    sh "${mvnHome}/bin/mvn package"
 }
 
 }
